@@ -57,3 +57,15 @@ A helpful trick you can do with the step parameter is to reverse a string by set
 Example Code
 my_str = 'Hello world'
 print(my_str[::-1]) # dlrow olleH
+
+How do you extract a specific portion of a string in Python?
+
+Using square brackets with start and stop positions.
+
+What is the outcome of 'Hello'[2:]?
+llo
+
+What is the purpose of the optional step parameter in string slicing?
+
+It specifies the increment between each character to extract.
+
