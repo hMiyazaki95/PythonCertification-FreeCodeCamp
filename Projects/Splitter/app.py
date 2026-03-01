@@ -1,0 +1,1 @@
+running_total = 0
