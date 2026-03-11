@@ -210,39 +210,119 @@ for name, id in zip(developers, ids):
     print(f'ID: {id}')
 
 
+<!-- generate even numbers -->
+<!-- if the number is divisible by 2 then the current number will be appended at the end of the list
 
-<!-- Questions
+first, 2 will be added to the empty list -->
+even_numbers = []
 
-What does the enumerate() function do?
+for num in range(21):
+    if num % 2 == 0:
+        even_numbers.append(num)
 
-
-It is used to print the memory addresses for each element in a list.
-
-It is used to create tuples and sets from lists and return an enumerate object.
-
-It is used to keep track of the index of an iterable and return an enumerate object.
-
-It is used to speed up the performance for your Python applications.
-
-Which of the following optional arguments in the enumerate() function specifies the starting value for the count?
+print(even_numbers)
 
 
-set
+<!-- more readable  -->
+<!-- 
+[expression for item in iterable if condition]
 
-position
+| Part                   | Meaning                                      |
+| ---------------------- | -------------------------------------------- |
+| `num` (first one)      | **The value that will be added to the list** |
+| 'num` (second one)     | ** The second num is the loop variable in the for loop.|
+| `for num in range(21)` | Loop through numbers 0–20                    |
+| `if num % 2 == 0`      | Only keep even numbers                       |
 
-start
 
-count
+ -->
+even_numbers = [num for num in range(21) if num % 2 == 0]
+print(even_numbers)
 
-What does the zip() function do?
+<!-- list comprehension -->
+<!-- create a new list of tuples indicating which numbers are even or odd -->
+numbers = [1, 2, 3, 4, 5]
+result = [(num, 'Even') if num % 2 == 0 else (num, 'Odd') for num in numbers]
+print(result)
+
+<!-- [(1, 'Odd'), (2, 'Even'), (3, 'Odd'), (4, 'Even'), (5, 'Odd')] -->
 
 
-It is used to iterate over multiple iterables in parallel.
+<!-- The filter() function is used to select elements from an iterable that meet a specific condition. The filter() function accepts a function and an iterable for its arguments. -->
 
-It is used to create zip files.
+<!-- passing in an is_long_word function into the filter() function to check if the current word count is greater than 4. All words that have a character count greater than 4 are added into a new list and assigned to the long_words variable. -->
+words = ['tree', 'sky', 'mountain', 'river', 'cloud', 'sun']
 
-It is used to break out of a nested loop.
+def is_long_word(word):
+    return len(word) > 4
 
-It is used to create an iterable that saves memory starting from a list.
--->
+long_words = list(filter(is_long_word, words))
+print(long_words) # ['mountain', 'river', 'cloud']
+
+
+List()
+map(function, iterable)
+filter(function, iterable)
+
+Key difference
+| Function   | What it does                                      |
+| ---------- | ------------------------------------------------- |
+| `map()`    | **changes every element**                         |
+| `filter()` | **removes elements that don’t match a condition** |
+
+numbers = [1,2,3,4]
+
+# map → change values
+list(map(lambda x: x*2, numbers))
+# [2,4,6,8]
+
+# filter → keep some values
+list(filter(lambda x: x%2==0, numbers))
+# [2,4]
+
+
+numbers = [5, 10, 15, 20]
+total = sum(numbers)
+print(total) # Result: 50
+
+numbers = [5, 10, 15, 20]
+total = sum(numbers, 10) # positional argument
+print(total) # 60
+
+
+numbers = [5, 10, 15, 20]
+total = sum(numbers, start=10) # keyword argument
+print(total) # 60
+
+
+<!-- Alternative way to code the sum function with start argument -->
+iterable = [5, 10, 15, 20]
+start = 10
+
+total = start
+for n in iterable:
+    total += n
+    print("n =", n, "| total =", total)
+
+print("final total =", total)
+
+
+Lambda Function - Anonymous Function
+
+- Lambda is only used for simple, short arithmetic or single-expression calculations.
+
+Why do anonymous functions exist?
+To avoid creating a separate named function when:
+- A function is only used once 
+— writing a full def feels unnecessary
+- You want to avoid defining a temporary helper function
+- Some functions like map(), filter(), and sorted() expect another function as input
+
+Don't use Labmda when 
+- the function is long
+- the logic is complex
+- the function is reused
+numbers = [1, 2, 3, 4, 5]
+
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # [2, 4]

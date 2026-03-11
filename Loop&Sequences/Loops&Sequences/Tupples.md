@@ -135,3 +135,5 @@ Correct!
 You will get an IndexError.
 
 The second item will be deleted.
+
+

@@ -69,3 +69,50 @@ Both versions will produce the same result, but the keyword argument is a little
 
 List comprehension as well as other functions like map(), filter(), and sum() might seem a little confusing at first. But with enough practice and time, you will start to feel more comfortable using them in your Python programs.
 
+
+
+
+
+Questions
+
+Which of the following is the correct way to use list comprehension?
+
+
+[while for loop num in range(21)]
+
+[num for num in range(21) if num % 2 == 0]
+Correct!
+
+
+[num for num]
+
+[for num in range(21) if num % 2 == 0]
+
+Which of the following functions takes an iterable and applies a function to each of its elements?
+
+
+memoryview
+
+map
+Correct!
+
+
+max
+
+min
+
+What will be printed to the console?
+
+numbers = [5, 10, 15, 20]
+total = sum(numbers, start=10)
+print(total) # ?
+
+60
+Correct!
+
+
+50
+
+40
+
+70
