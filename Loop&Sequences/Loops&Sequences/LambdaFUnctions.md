@@ -49,6 +49,8 @@ def calculate_expression(x):
 print(calculate_expression(3))  # 14
 Both regular functions and lambda functions have their use cases in Python programs. If you are dealing with a single inline expressions, then you might consider using a lambda function. Otherwise, using a regular function would be the way to go.
 
+
+
 Questions
 
 Which of the following is the best use case for a lambda function?

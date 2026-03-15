@@ -92,6 +92,7 @@ Comming String Methods:
 .strip() -> remove space
 .replace(old, new) -> example .replace('hello', 'hi') -> replace the hellow with hi
 .sprit() -> this split the word for exmaple -> ['hello', 'world']
+.sprit('\n) -> will append new line for each line of strings
 
 
 join = connect elements together into a single string, using a separator
