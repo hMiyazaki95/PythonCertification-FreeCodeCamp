@@ -29,11 +29,14 @@ def number_pattern(n):
     # starting number at the index 0
     result = ''
     # looping through numbers (integer value) from 1 to n
-    for index in range(1, n + 1):
+    for value in range(1, n + 1):
         # First number: no leading space
-        if index is 1:
-            result += str(index)
+        if value == 1:
+            result += str(value)
         else:
-            result += ' ' + str(index)
+            result += ' ' + str(value)
         
     return result
+
+print(number_pattern(4))
+print(number_pattern(12))
