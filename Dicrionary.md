@@ -99,16 +99,25 @@ pizza.update({ 'price': 15, 'total_time': 25 })
 
 What Are Some Common Techniques to Loop Over a Dictionary?
 
-print("Start small. Ship something.")products = {
+print("Start small. Ship something.")
+
+products = {
     'Laptop': 990,
     'Smartphone': 600,
     'Tablet': 250,
     'Headphones': 70,
 }
 
-for price in products.values(): # return all the values. In this case price
+
+for price in products.values(): 
     print(price)
-    
+# output
+<!-- #990
+600
+250
+70 -->
+
+
 for product in products.keys(): # returns all the keys. In this case product
     print(product)
 # you can also do below
@@ -118,6 +127,12 @@ for product in products.keys(): # returns all the keys. In this case product
 # this will returns the key value pair
 for product in products.items():
     print(product)
+# output
+
+<!-- 0 Laptop
+1 Smartphone
+2 Tablet
+3 Headphones -->
 
 # defining product loop variable
 # defining price loops
@@ -137,14 +152,15 @@ products = products = {
 }
 
 for product, price in products.items():
-    products[product] = round(price * 0.8) # create the new list with product it the list
+    products[product] = round(price * 0.8) # create the new list with product in the list
 
 print(products) # this will print 
-#the {
-#    'Laptop': 792, 
-#    'Smartphone': 480, 
+
+# {
+# 'Laptop': 792, 
+# 'Smartphone': 480, 
 # 'Tablet': 200, 
-#  'Headphones': 56
+# 'Headphones': 56
 # }
 
 # enumerate the the keys with enumerate()
@@ -209,4 +225,42 @@ for index, product in enumerate(products.items()):
 for index, product in enumerate(products.items(), 1):
     print(index, product)
 
+
+## ######### Name Conflict  ############ ##
+
+# suppose you write own function like below
+def sin():
+    print("Hello")
+# then you import math libary
+import math
+
+# Python library function will overwrite your functions.
+# Python think that you will use function from the standard library instead of your function
+# this causes namespace collisions, and make it harder to know where certain names are coming from.
+
+# Is it good practice to avoid the from name import *
+
+###### Special Build-in variable in Python
+# Below means "Only run this code when this file is executed directly."
+if __name__ == "__main__": 
+
+##### When do you use this? #####
+# when you write the utility file:
+# whe you quickly test your file by run it directly like below. 
+# you have a math_tools.py below
+# math_tools.py
+def add(a, b):
+    return a + b
+
+if __name__ == "__main__":
+    print(add(2, 3))
+
+# Then main.py (or any file) imports it
+import math_tools
+
+result = math_tools.add(10, 20)
+
+print(result)
+
+# python will ignore the print(add(2, 3)) in the first code and execute the print(result) and then output 30 because you have this if __name__ == "__main__":
 

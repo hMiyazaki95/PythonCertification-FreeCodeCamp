@@ -135,3 +135,45 @@ if __name__ == '__main__':
 But if the script is imported as a module, the code within that block doesn't run.
 
 This is helpful because it allows Python scripts to have two purposes. They can be run directly to execute their main logic, or they can be imported into another module without executing their main logic.
+
+
+Questions
+
+Which of the following statements best describes the Python Standard Library?
+
+
+It is a collection of pre-written modules and packages included with Python.
+Correct!
+
+
+It is a collection of third-party libraries that need to be installed separately.
+
+It is the core syntax of the Python language itself.
+
+It consists of external libraries written in other programming languages.
+
+Which of the following is the correct syntax to import the entire datetime module and give it a shorter alias dt?
+
+
+import datetime
+
+from datetime import date as dt
+
+import datetime as dt
+Correct!
+
+
+from datetime import dt
+
+If you only want to use the mean function from the statistics module directly in your code without prefixing it with statistics, which import statement would you use?
+
+
+import statistics
+
+from statistics import mean
+Correct!
+
+
+import mean from statistics
+
+from statistics import *
