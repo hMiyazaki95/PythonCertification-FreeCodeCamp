@@ -45,7 +45,27 @@ medical_records = [
 # find invalid values in a dictionary
 def find_invalid_records(patient_id, age, gender, diagnosis, medications, last_visit_id):
     constraints = {
-        'patient_id': isinstance(patient_id, str)
+         # 'patient_id' is the name of the field being validated.
+        # isinstance() checks whether patient_id is a string.
+        # If it is a string, re.search() checks whether it contains
+        # the lowercase letter 'p'.
+        # The second check runs only if the first check returns True.
+        # lowercase p does not match P1001
+        # and operator returns falsy 
+        # since id can starts with lowercase or uppercase, add third argument (re.IGNORECASE) to use flags
+        # add \d after p because \d means any digit from 0 to 9.
+            #   p1     ✅ matches
+            # P5     ✅ matches because of re.IGNORECASE
+            # p1001  ✅ matches the beginning, "p1"
+            # px     ❌ does not match
+            # p.5    ❌ does not match because the digit is not immediately after p
+        # add quantifier to regex patternto match one or more digit
+        #'patient_id': isinstance(patient_id, str) and re.search('\d+', patient_id, re.IGNORECASE)
+        # Replace the search call with a fullmatch function to ensure no extra characters are found in the string.
+        'patient_id': isinstance(patient_id, str) and re.fullmatch('p\d+', patient_id, re.IGNORECASE)
+        # verify age is an integer 
+        # age should not only be a integer, positive integer greater than or equal to 18
+        'age': isinstance(age, int) and age >= 18
     }
     return constraints
 # validate the data set
@@ -71,7 +91,7 @@ def validate(data):
     #     pass
     
     # The f-string fix: The {} placeholder automatically converts the integer into text for you.
-    # nside your for loop, if the item in dictionary is not an instance of dict, print Invalid format: expected a dictionary at position <index>. (where <index> should be replaced by the current index) and set is_invalid to True.
+    # Inside your for loop, if the item in dictionary is not an instance of dict, print Invalid format: expected a dictionary at position <index>. (where <index> should be replaced by the current index) and set is_invalid to True.
     for index, dictionary in enumerate(data):
         if not isinstance(dictionary, dict):
             print(f"Invalid format: expected a dictionary at position {index}.")
