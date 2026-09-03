@@ -62,11 +62,22 @@ def find_invalid_records(patient_id, age, gender, diagnosis, medications, last_v
         # add quantifier to regex patternto match one or more digit
         #'patient_id': isinstance(patient_id, str) and re.search('\d+', patient_id, re.IGNORECASE)
         # Replace the search call with a fullmatch function to ensure no extra characters are found in the string.
-        'patient_id': isinstance(patient_id, str) and re.fullmatch('p\d+', patient_id, re.IGNORECASE)
+        'patient_id': isinstance(patient_id, str) and re.fullmatch('p\d+', patient_id, re.IGNORECASE),
         # verify age is an integer 
         # age should not only be a integer, positive integer greater than or equal to 18
-        'age': isinstance(age, int) and age >= 18
+        'age': isinstance(age, int) and age >= 18,
+        # check if lowercase gender is in the ('male', 'female')
+        # Convert the input text to lowercase and check whether it is exist in the tuple and then pass as an allowed value:
+        'gender': isinstance(gender, str) and gender.lower() in ('male', 'female'),
+        # check whether value is str or None
+        'diagnosis': isinstance(diagnosis, str) or diagnosis is None,
+        # check whether value is a list
+        # Each item in the medications list should be a string
+        # On the right side of the and operator, use the list comprehension syntax to create a list made by evaluating isinstance(i, str) for each i in medications.
+        'medications': isinstance(medications, list) and [isinstance(i, str) for i in medications]
+        
     }
+    
     return constraints
 # validate the data set
 def validate(data):
