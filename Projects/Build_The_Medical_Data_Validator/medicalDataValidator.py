@@ -74,11 +74,15 @@ def find_invalid_records(patient_id, age, gender, diagnosis, medications, last_v
         # check whether value is a list
         # Each item in the medications list should be a string
         # On the right side of the and operator, use the list comprehension syntax to create a list made by evaluating isinstance(i, str) for each i in medications.
-        'medications': isinstance(medications, list) and [isinstance(i, str) for i in medications]
+        # Pass the list [isinstance(i, str) for i in medications] to the all function to ensure that every element in it is a string.
+        'medications': isinstance(medications, list) and all([isinstance(i, str) for i in medications]),
+        # On the right side of the and operator, use the fullmatch function from the re module to ensure that last_visit_id starts with the letter v (either lowercase or uppercase) followed by one or more digits.
+        'last_visit_id': isinstance(last_visit_id, str) and re.fullmatch('v\d+', last_visit_id, re.IGNORECASE)
         
     }
-    
-    return constraints
+    # make it return a list of the invalid keys by using the list comprehension syntax, return a list that evaluates key for each key, value in constraints.items().
+    # Since you want to return a list containing only invalid keys, add an if clause to your comprehension so that each key is added to the list only when value is falsy.
+    return [key for key, value in constraints.items() if not value]
 # validate the data set
 def validate(data):
     # You want to ensure that your data is either a list or a tuple. Therefore, within the validate function, 
@@ -97,6 +101,7 @@ def validate(data):
         ['patient_id', 'age', 'gender', 'diagnosis', 'medications', 'last_visit_id']
     )
     # create the for loop to iterate over data
+    # enumerate function give you both the position (index) item (dictionary) while looping through a list
     # set index variable and item variable (dictionary)
     # for index, dictionary in enumerate(data):
     #     pass
@@ -107,6 +112,7 @@ def validate(data):
         if not isinstance(dictionary, dict):
             print(f"Invalid format: expected a dictionary at position {index}.")
             is_invalid = True
+            continue # skip to next iteration
             
         # if the set of keys from the current dictionary is different from key_set
         # to test out comment out the age key in the first dictionary 
@@ -115,6 +121,16 @@ def validate(data):
         if key_set != set(dictionary.keys()):
             print(f"Invalid format: {dictionary} at position {index} has missing and/or invalid keys.")
             is_invalid = True
+            continue
+        # assign it a call to find_invalid_records using the ** operator to unpack dictionary.
+        # (**dictionary) sends the current patient dictionary (declared in the for loop) to find_invalid_records()
+        invalid_records = find_invalid_records(**dictionary)
+        
+        for key in invalid_records:
+             # Report every invalid value in the current dictionary
+            print(f"Unexpected format '{key}: {dictionary[key]}' at position {index}.")
+            is_invalid = True
+
     
     if is_invalid:
         return False
@@ -130,9 +146,10 @@ def validate(data):
 # # Invalid format: expected a list or tuple., turn medical_records into a string. You should see Invalid format: expected a list or tuple. printed to the terminal.
 # medical_records = "string"
 
-    # check keys are ordered and make sure it doesn't have a same numeber, extra, or misspelled.
+    # check keys are ordered and make sure it doesn't have a same number, extra, or misspelled.
     # key_set = set(['patient_id', 'age', 'gender', 'diagnosis', 'medications', 'last_visit_id'])
 
 validate(medical_records)
 # The ** operator can be used to unpack the elements in a dictionary and pass them as keyword arguments in a function call:
-print(find_invalid_records(**medical_records[0]))
+# find_invalid_records function is complete so remove print
+# print(find_invalid_records(**medical_records[0]))
