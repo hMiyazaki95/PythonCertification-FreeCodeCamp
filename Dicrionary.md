@@ -30,9 +30,23 @@ pizza.keys()
 # below is dict_keys view object
 # dict_keys(['name', 'price', 'calories_per_slice']) 
 
+
 pizza.values()
 # below is dict_values view object
 # dict_values(['Margherita Pizza', 8.9, 250])
+
+pizza = {
+    'name': 'Margherita Pizza',
+    'price': 8.9,
+    'calories_per_slice': 250
+}
+
+pizza.keys()
+# dict_keys(['name', 'price', 'calories_per_slice'])
+
+pizza.values()
+# dict_values(['Margherita Pizza', 8.9, 250])
+
 
 pizza.items()
 # below is a view object with all the key-value pairs
@@ -264,3 +278,87 @@ print(result)
 
 # python will ignore the print(add(2, 3)) in the first code and execute the print(result) and then output 30 because you have this if __name__ == "__main__":
 
+# get(): get method retrieves the value associated with a key. It's similar to the bracket notation, but it lets you set a default value, preventing errors if the key doesn't exist.
+
+
+
+
+
+
+
+
+Dictionaries
+| Method or term   | Easy description                                          | How it works                                              |
+| ---------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| Dictionary       | Stores information as key and value pairs                 | Example: `{'name': 'Pizza', 'price': 8.9}`                |
+| Key              | The name used to find a value                             | `'price'` is a key                                        |
+| Value            | The information connected to a key                        | `8.9` is the value                                        |
+| `dict()`         | Creates a dictionary                                      | Can convert key and value tuples into a dictionary        |
+| Bracket notation | Gets a value using its key                                | `pizza['price']` returns `8.9`                            |
+| `get()`          | Gets a value safely                                       | `pizza.get('price', 0)` returns `0` if the key is missing |
+| `keys()`         | Shows all dictionary keys                                 | `pizza.keys()` returns a view of the keys                 |
+| `values()`       | Shows all dictionary values                               | `pizza.values()` returns a view of the values             |
+| `items()`        | returns view object with keys and values together         | Each pair is returned as a tuple                          |
+| View object      | A live view of dictionary information                     | It changes when the original dictionary changes           |
+| `clear()`        | Removes everything                                        | The dictionary becomes empty                              |
+| `pop()`          | Removes a key and returns its value                       | A default value can prevent a `KeyError`                  |
+| `popitem()`      | Removes the most recently added pair                      | It returns the removed key and value                      |
+| `update()`       | Adds or updates information                               | Existing values are replaced and new keys are added       |
+| `KeyError`       | An error caused by a missing key                          | Happens when you request a key that does not exist        |
+
+Looping through dictionaries
+| Method or term                         | Easy description                      | How it works                                |
+| -------------------------------------- | ------------------------------------- | ------------------------------------------- |
+| `for key in dictionary`                | Loops through keys                    | Each key is placed in the loop variable     |
+| `for value in dictionary.values()`     | Loops through values                  | Each value is placed in the loop variable   |
+| `for key, value in dictionary.items()` | Loops through keys and values         | The tuple is unpacked into two variables    |
+| Tuple unpacking                        | Separates tuple values into variables | `product, price` receives the key and value |
+| `enumerate()`                          | Adds a counter to a loop              | Returns an index and the current item       |
+| `enumerate(data, 1)`                   | Starts counting from 1                | Without `1`, counting starts from 0         |
+
+Sets
+| Method or term | Easy description                  | How it works                                 |
+| -------------- | --------------------------------- | -------------------------------------------- |
+| Set            | Stores unique values              | Duplicate values are automatically removed   |
+| Unordered      | Items have no guaranteed position | You cannot access a set with an index        |
+| Mutable        | The set can be changed            | You can add or remove items                  |
+| Immutable item | An item that cannot be changed    | Sets can contain strings, numbers and tuples |
+| `{1, 2, 3}`    | Creates a set with values         | Curly brackets contain the set items         |
+| `set()`        | Creates an empty set              | `{}` creates an empty dictionary, not a set  |
+| `add()`        | Adds one value                    | Duplicate values are not added again         |
+| `remove()`     | Removes a value                   | Raises `KeyError` if the value is missing    |
+| `discard()`    | Safely removes a value            | Does nothing if the value is missing         |
+| `clear()`      | Removes every value               | The set becomes empty                        |
+| `in`           | Checks whether a value exists     | `5 in my_set` returns `True` or `False`      |
+
+Set comparisons and operations
+| Method or operator       | Easy description                              | How it works                        |
+| ------------------------ | --------------------------------------------- | ----------------------------------- |
+| `issubset()`             | Checks if all values exist in another set     | Useful for checking required skills |
+| `issuperset()`           | Checks if a set contains another complete set | Useful for checking permissions     |
+| `isdisjoint()`           | Checks if two sets share no values            | Returns `True` when nothing matches |
+| `\|` Union               | Combines both sets                            | Includes every unique value         |
+| `&` Intersection         | Finds shared values                           | Useful for finding matched skills   |
+| `-` Difference           | Finds values missing from the second set      | Useful for finding missing skills   |
+| `^` Symmetric difference | Finds values that are not shared              | Excludes values found in both sets  |
+
+Python libraries and imports
+| Method or term          | Easy description                       | How it works                                         |
+| ----------------------- | -------------------------------------- | ---------------------------------------------------- |
+| Python standard library | Reusable code included with Python     | Includes modules such as `math`, `re` and `datetime` |
+| Module                  | A Python file containing reusable code | It can contain functions, classes and variables      |
+| `import math`           | Imports an entire module               | Use `math.sqrt(36)` to call its function             |
+| Dot notation            | Accesses something inside a module     | `math.sqrt` means the `sqrt` function from `math`    |
+| `import math as m`      | Imports a module using a shorter name  | Use `m.sqrt(36)`                                     |
+| Alias                   | A different name for an imported item  | Created with the `as` keyword                        |
+| `from math import sqrt` | Imports one specific function          | You can call `sqrt(36)` directly                     |
+| `from math import *`    | Imports everything directly            | Discouraged because names can conflict               |
+| Namespace collision     | Two items have the same name           | Python may use or replace the wrong name             |
+
+Running a Python file
+| Method or term               | Easy description                     | How it works                                          |
+| ---------------------------- | ------------------------------------ | ----------------------------------------------------- |
+| `__name__`                   | A special variable created by Python | Its value depends on how the file is used             |
+| `"__main__"`                 | Means the file was run directly      | Python assigns this value to `__name__`               |
+| Imported module              | A file loaded by another Python file | Its `__name__` becomes the module’s name              |
+| `if __name__ == "__main__":` | Controls when main code runs         | The code runs only when the file is executed directly |
