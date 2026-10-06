@@ -20,8 +20,8 @@ def add_setting(current_settings, new_settings):
     value = value.lower()
     # Check whether the setting already exists.
     if key in current_settings:
-        return(f"Setting '{key}' already exists! Cannot add a new setting with this name."
-        )
+        return f"Setting '{key}' already exists! Cannot add a new setting with this name."
+        
     # Add the new key-value pair to the dictionary.
     current_settings[key] = value
     # Return the required success message.
@@ -43,13 +43,35 @@ def update_setting(current_settings, new_settings):
     value = value.lower()
     # Return an error if the key does not exist.
     if key not in current_settings:
-        return(f"Setting {key} does not exist! Cannot update a non-existing setting.")
+        return (
+    f"Setting '{key}' does not exist! "
+    "Cannot update a non-existing setting."
+)
     # Update the existing dictionary value.
     current_settings[key] = value
 
     return f"Setting '{key}' updated to '{value}' successfully!"
+# delete setting will remove the key from the existing setting so the first argument is current_settings
+# Since it's asking to delete the key, question will be which key we will delete so key will be the second parameter
+def delete_setting(current_settings, key):
+    # only asking to conver the key to lowercase so we only declair the key
+    key = key.lower()
+    if key not in current_settings:
+        return "Setting not found!"
     
+    del current_settings[key]
+    return f"Setting '{key}' deleted successfully!"
+
+# view setting is only to check the existing settings so it takes only one argument, current_settings
+def view_settings(current_settings):
+    if not current_settings:
+        return "No settings available."
+    formatted_settings = "Current User Settings:\n"
+    for key, value in current_settings.items():
+        formatted_settings += f"{key.capitalize()}: {value}\n"
+    return formatted_settings
 
 
+  
 
   
