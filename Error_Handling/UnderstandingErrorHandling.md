@@ -132,6 +132,8 @@ What is the purpose of using the print() function in debugging?
 To execute code faster
 
 To display variable values and program flow
+Correct!
+
 
 To compile the code
 
@@ -145,6 +147,8 @@ A graphical user interface
 A way to compile Python code
 
 An interactive debugging environment
+Correct!
+
 
 A method to encrypt code
 
@@ -158,6 +162,5 @@ They prevent syntax errors.
 They fix bugs in your code automatically.
 
 They provide a visual interface to inspect the state of your program.
-Check your answer
-Ask for Help
-Navigated to What Are Some Good Debugging Techniques in Python?
+Correct!
+
