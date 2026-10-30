@@ -27,7 +27,7 @@
 # Create a function named caesar. Put all your existing code within the function body. Pay attention to keep the same indentation level for all of the lines within the function body.
 # make code reusable
 def caesar(text, shift, encrypt=True):
-    if not isinstance(shift, int):
+    if not isinstance(shift, int) or isinstance(shift, bool):
         return "Shift must be an integer value."
     # if shift < 1:
     #         return 'Shift must be a positive integer.'
